@@ -1,0 +1,61 @@
+{
+  "python": "3.12.14",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "workload": {
+    "incidents": 500000,
+    "events": 2000000,
+    "lookups": 100000,
+    "queue_operations": 100000,
+    "with_persistence": true,
+    "output": "docs/benchmark_results.json"
+  },
+  "notes": [
+    "Synthetic creation events followed by duplicate arrivals; every arrival is audited.",
+    "Duplicate arrivals do not add successful event IDs.",
+    "Fixture ingestion bypasses periodic checkpoints to isolate individual costs.",
+    "Queue timing rotates a copy of the scheduling deque; it performs no business processing.",
+    "Single run on this machine; timings are observations, not service guarantees."
+  ],
+  "create_incidents_seconds": 9.030454,
+  "duplicate_arrivals_with_audit_seconds": 5.871431,
+  "id_lookups_seconds": 0.061259,
+  "tag_lookups_with_result_copy_seconds": 0.233852,
+  "tag_results_returned": 5000000,
+  "shipment_lookups_with_result_copy_seconds": 0.213596,
+  "shipment_results_returned": 5000000,
+  "deque_pop_append_pairs_seconds": 0.004111,
+  "report_top_20_seconds": 0.395416,
+  "report_top_20": [
+    "INC-0000004",
+    "INC-0000009",
+    "INC-0000014",
+    "INC-0000019",
+    "INC-0000024",
+    "INC-0000029",
+    "INC-0000034",
+    "INC-0000039",
+    "INC-0000044",
+    "INC-0000049",
+    "INC-0000054",
+    "INC-0000059",
+    "INC-0000064",
+    "INC-0000069",
+    "INC-0000074",
+    "INC-0000079",
+    "INC-0000084",
+    "INC-0000089",
+    "INC-0000094",
+    "INC-0000099"
+  ],
+  "state_counts": {
+    "incidents": 500000,
+    "successful_event_ids": 500000,
+    "audit_entries": 2000000,
+    "normal_tickets": 500000
+  },
+  "complete_checkpoint_seconds": 14.832108,
+  "checkpoint_bytes": 543000357,
+  "validated_restore_and_index_rebuild_seconds": 21.962921,
+  "restore_count_and_report_checks": "passed",
+  "process_peak_rss_bytes": 2508320768
+}

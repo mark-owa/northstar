@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "northstar-incident-prototype"
+version = "1.0.0"
+description = "A function-based Python incident engine with checkpoints and durable authorization"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+northstar = "northstar.__main__:main"
+
+[tool.setuptools]
+packages = ["northstar"]
