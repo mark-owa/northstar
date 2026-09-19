@@ -1,8 +1,12 @@
 # Northstar incident engine
 
-A complete, runnable Python reference implementation of our Northstar client project. It imports incident creation events, validates and audits each outcome, maintains incident records and indexes, schedules FIFO work and LIFO retries, simulates processing, and recovers from checkpoints and a durable authorization journal.
+Northstar is a runnable Python logistics incident-processing case study. It imports incident creation events, validates and audits each outcome, maintains incident records and indexes, schedules FIFO work and LIFO retries, simulates processing, and recovers from checkpoints and a durable authorization journal.
 
 This is a local prototype for one worker. Processing is simulated: you choose `resolved` or `failed`. It does not contact carriers or change real shipments. Python 3.10 or newer is required; there are no third-party runtime dependencies.
+
+**Repository history:** Northstar was developed before this GitHub repository was
+created. It was published here later, so the public commit history begins with the
+repository import rather than the project's original development timeline.
 
 ## Start in Visual Studio Code
 
@@ -103,7 +107,7 @@ Keep `exclusive_store` for the full session and serialize calls within that sess
 
 `get_incident` returns a deep copy. `find_by_tag` and `find_by_shipment` return copied sets. Reading these query results cannot change authoritative records or indexes.
 
-`process_next` requires an explicit lane (`normal` or `retry`) and outcome (`failed` or `resolved`). The client did not specify fairness between lanes. The engine preserves each lane's order and lets the caller decide which lane to service.
+`process_next` requires an explicit lane (`normal` or `retry`) and outcome (`failed` or `resolved`). The current design does not impose fairness between lanes. The engine preserves each lane's order and lets the caller decide which lane to service.
 
 | Candidate result | Meaning and next action |
 | --- | --- |
