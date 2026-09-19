@@ -1,10 +1,12 @@
 # Northstar incident engine
 
+**Focus:** state correctness · deduplication · retries · crash recovery · persistence
+
 Northstar is a Python logistics incident-processing case study focused on reliable state transitions, deduplication, retry scheduling, auditability, and crash recovery.
 
 It accepts incident-creation events, validates them before commit, keeps authoritative records plus derived indexes, schedules normal work FIFO and retries LIFO, and persists recovery state through checkpoints plus an authorization journal. Processing is simulated; it does not contact carriers or modify real shipments.
 
-**Repository history:** Northstar was developed before this GitHub repository was created. The public history starts with the later repository import rather than the original local development timeline.
+**Portfolio note:** This case study was built and tested locally before I published it here. GitHub therefore shows the later import and portfolio-maintenance history rather than the original build sequence.
 
 ## Why it exists
 
